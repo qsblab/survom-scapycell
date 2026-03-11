@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  scom-app:
+    build: .
+    container_name: scom-grn
+    ports:
+      - "8050:8050"
+    volumes:
+      - /data/users/vikash/scom1.x/celloracle_cache:/app/celloracle_cache
+      - /data/users/vikash/scom1.x/data/sc_test1:/app/data/sc_test1
+      - /data/users/vikash/scom1.x/output:/app/output
+      - /data/users/vikash/scom1.x/uploaded_data:/app/uploaded_data
+    restart: unless-stopped

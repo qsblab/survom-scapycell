@@ -1,0 +1,8 @@
+services:
+  scom-app:
+    volumes:
+      - /data/users/vikash/scom1.x:/app
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+      - PYTHONUNBUFFERED=1
+    command: python -u app.py

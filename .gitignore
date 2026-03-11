@@ -1,0 +1,47 @@
+# Ignore shell/editor history
+.bash_history
+.python_history
+.viminfo
+.lesshst
+
+# Ignore caches and config dirs
+.cache/
+.conda/
+.config/
+.docker/
+.vscode-server/
+
+# Ignore Conda and Python environments
+miniconda3/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# Ignore large or binary files
+*.h5ad
+*.h5
+*.zip
+*.tar.gz
+*.tar
+*.gz
+
+# Ignore project outputs
+grn2/
+celloracle_data/
+h5ad/
+output/
+uploaded_Data/
+data/
+flask_session/
+tamalika_grn/
+celloracle_cache/
+
+# Ignore system and temp files
+*.swp
+*.swo
+*~
+.DS_Store
+*.log
+*.csv

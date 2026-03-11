@@ -1,0 +1,107 @@
+<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" />
+
+<style>
+  #file-dropzone {
+    border: 1px dashed #ccc;
+    padding: 6px;
+    min-height: 40px;
+    background: #f8f8f8;
+    font-size: 13px;
+  }
+
+  .dropzone .dz-message {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+  }
+
+  .dropzone .dz-preview {
+    display: none;
+  }
+
+  #uploadBtn {
+    margin-top: 6px;
+    padding: 4px 10px;
+    font-size: 20px;
+  }
+
+  #upload-status {
+    margin-top: 6px;
+    font-size: 13px;
+    color: #444;
+    font-weight: bold;
+  }
+
+  #upload-progress {
+    width: 100%;
+    display: none;
+    margin-top: 6px;
+  }
+</style>
+
+<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+
+<form action="/scom/upload" class="dropzone" id="file-dropzone" enctype="multipart/form-data"></form>
+<button type="button" id="uploadBtn">⬆️ Upload All Files</button>
+
+<!-- ✅ Status message and progress bar -->
+<div id="upload-status"></div>
+<progress id="upload-progress" value="0" max="100"></progress>
+
+<script>
+  Dropzone.autoDiscover = false;
+
+  const dz = new Dropzone("#file-dropzone", {
+    url: "/scom/upload",
+    paramName: "file",
+    uploadMultiple: true,
+    parallelUploads: 3,
+    maxFiles: 3,
+    maxFilesize: 2028,
+    autoProcessQueue: false,
+    acceptedFiles: ".mtx,.tsv,.csv,.gz",
+    forceChunking: false,
+
+    init: function () {
+      const dropzone = this;
+      const statusMsg = document.getElementById("upload-status");
+      const progressBar = document.getElementById("upload-progress");
+
+      this.on("addedfile", function () {
+        statusMsg.textContent = "📂 Files added. Click ⬆️ Upload All Files to start.";
+        progressBar.style.display = "none";
+      });
+
+      document.getElementById("uploadBtn").addEventListener("click", function () {
+        const queued = dropzone.getQueuedFiles();
+        if (queued.length !== 3) {
+          alert("Please select exactly 3 files (matrix.mtx, barcodes.tsv, features.tsv).");
+          return;
+        }
+        statusMsg.textContent = "⏳ Uploading...";
+        progressBar.style.display = "block";
+        progressBar.value = 0;
+        dropzone.processQueue();
+      });
+
+      this.on("uploadprogress", function (file, progress) {
+        progressBar.value = progress;
+      });
+
+      this.on("successmultiple", function (files, response) {
+        statusMsg.textContent = "✅ Upload complete!";
+        progressBar.value = 100;
+        window.parent.postMessage({
+          type: "uploadComplete",
+          folder: response.session_folder
+        }, "*");
+      });
+
+      this.on("errormultiple", function (files, response) {
+        console.error("❌ Upload error:", response);
+        statusMsg.textContent = "❌ Upload failed.";
+        progressBar.style.display = "none";
+      });
+    }
+  });
+</script>

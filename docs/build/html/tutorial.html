@@ -1,0 +1,222 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Survom: End-to-End Single-Cell &amp; GRN Tutorial &mdash; Single-Cell GRN Tool 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Single-Cell GRN Tool documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Single-Cell GRN Tool
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Survom: End-to-End Single-Cell &amp; GRN Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#phase-1-single-cell-preprocessing-clustering">Phase 1: Single-Cell Preprocessing &amp; Clustering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#upload-your-dataset">1. Upload Your Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quality-control-qc-filtering">2. Quality Control (QC) &amp; Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#normalization-feature-selection">3. Normalization &amp; Feature Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dimensionality-reduction-pca-umap">4. Dimensionality Reduction (PCA &amp; UMAP)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clustering-marker-identification">5. Clustering &amp; Marker Identification</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#phase-2-gene-regulatory-network-grn-inference">Phase 2: Gene Regulatory Network (GRN) Inference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#initialization-target-selection">1. Initialization &amp; Target Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#network-inference-parameters">2. Network Inference Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#phase-3-image-analysis-interactive-results">Phase 3: Image Analysis &amp; Interactive Results</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#interactive-image-analysis">1. Interactive Image Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#network-visualization">2. Network Visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-export">3. Data Export</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Single-Cell GRN Tool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Survom: End-to-End Single-Cell &amp; GRN Tutorial</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tutorial.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="survom-end-to-end-single-cell-grn-tutorial">
+<h1>Survom: End-to-End Single-Cell &amp; GRN Tutorial<a class="headerlink" href="#survom-end-to-end-single-cell-grn-tutorial" title="Link to this heading"></a></h1>
+<p>Welcome to Survom! This tutorial is designed for first-time users and covers all topics from loading datasets, performing single-cell RNA-seq preprocessing, to the visualization and biological interpretation of Gene Regulatory Networks (GRNs).</p>
+<p>This tutorial assumes a basic knowledge of:</p>
+<ul class="simple">
+<li><p>The scRNA-seq protocol</p></li>
+<li><p>Transcriptomic data analysis</p></li>
+<li><p>Basics of gene expression and its relevance to cell identity</p></li>
+</ul>
+<hr class="docutils" />
+<section id="phase-1-single-cell-preprocessing-clustering">
+<h2>Phase 1: Single-Cell Preprocessing &amp; Clustering<a class="headerlink" href="#phase-1-single-cell-preprocessing-clustering" title="Link to this heading"></a></h2>
+<p>This phase cleans your raw data, corrects for technical noise, and groups similar cells together so you can identify distinct cell populations.</p>
+<section id="upload-your-dataset">
+<h3>1. Upload Your Dataset<a class="headerlink" href="#upload-your-dataset" title="Link to this heading"></a></h3>
+<p>Load your expression data into the tool. Survom supports standard 10x Genomics output files (<code class="docutils literal notranslate"><span class="pre">matrix.mtx</span></code>, <code class="docutils literal notranslate"><span class="pre">barcodes.tsv</span></code>, and <code class="docutils literal notranslate"><span class="pre">features.tsv</span></code>). In these matrices, genes should be in rows and samples (cells) should be in columns. Ensure your files are uncompressed or standard gzipped formats before uploading.</p>
+</section>
+<section id="quality-control-qc-filtering">
+<h3>2. Quality Control (QC) &amp; Filtering<a class="headerlink" href="#quality-control-qc-filtering" title="Link to this heading"></a></h3>
+<p>Apply threshold filters to exclude cells with too few or too many genes detected (indicating empty droplets or multiplet/doublet artifacts).</p>
+<ul class="simple">
+<li><p><strong>Min. Genes per Cell:</strong> Set to 200 as a starting point to remove empty droplets.</p></li>
+<li><p><strong>Max Genes (Implicit):</strong> While our tool focuses on minimums, highly extreme gene counts naturally drop out during normalization.</p></li>
+<li><p><strong>Min. Cells per Gene:</strong> Set to 3 to remove uninformative genes and speed up computation.</p></li>
+<li><p><strong>Mitochondrial Filter (% mt):</strong> Dying cells leak standard RNA but retain mitochondrial RNA. Enable the filter, input the MT prefix (e.g., <code class="docutils literal notranslate"><span class="pre">MT-</span></code>), and set an upper limit of 5% to 10% to ensure you are only analyzing healthy, viable cells.</p></li>
+</ul>
+</section>
+<section id="normalization-feature-selection">
+<h3>3. Normalization &amp; Feature Selection<a class="headerlink" href="#normalization-feature-selection" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Normalization:</strong> Raw counts must be corrected for differences in sequencing depth. Median Normalization or Counts Per Million (CPM) are excellent defaults. The data is automatically log-transformed to stabilize variance.</p></li>
+<li><p><strong>Feature Selection:</strong> Select “VST” (Variance Stabilizing Transformation) and retain the top 2,000 Highly Variable Genes (HVGs). This isolates the genes that capture true biological variation rather than baseline “housekeeping” functions.</p></li>
+</ul>
+</section>
+<section id="dimensionality-reduction-pca-umap">
+<h3>4. Dimensionality Reduction (PCA &amp; UMAP)<a class="headerlink" href="#dimensionality-reduction-pca-umap" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>PCA:</strong> Run Principal Component Analysis to compress the dataset. Retaining the first 30 principal components is a balanced choice for most datasets.</p></li>
+<li><p><strong>UMAP:</strong> Set the minimum distance (<code class="docutils literal notranslate"><span class="pre">min_dist</span></code>) to 0.3 for a balance between global and local structure, and use 15 to 30 neighbors. This will flatten your complex data into a readable 2D map.</p></li>
+</ul>
+</section>
+<section id="clustering-marker-identification">
+<h3>5. Clustering &amp; Marker Identification<a class="headerlink" href="#clustering-marker-identification" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Clustering:</strong> Use the Louvain algorithm. A resolution of 0.5 to 0.8 works perfectly for datasets of moderate complexity (5,000–20,000 cells). Increase this value if you want finer, more specific sub-clusters.</p></li>
+<li><p><strong>Differential Expression:</strong> Choose the Wilcoxon rank-sum test to identify “Marker Genes” that are significantly enriched in each cluster.</p></li>
+<li><p><em>Downstream Step:</em> You can export these marker genes to perform Cell Type Annotation (matching signatures with public databases) and Functional Enrichment (e.g., KEGG, GO pathways) offline.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="phase-2-gene-regulatory-network-grn-inference">
+<h2>Phase 2: Gene Regulatory Network (GRN) Inference<a class="headerlink" href="#phase-2-gene-regulatory-network-grn-inference" title="Link to this heading"></a></h2>
+<p>Once your cells are clustered, use this phase to discover the Transcription Factors (the “master switches”) controlling those specific cell identities.</p>
+<section id="initialization-target-selection">
+<h3>1. Initialization &amp; Target Selection<a class="headerlink" href="#initialization-target-selection" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Select your Organism (e.g., Mouse or Human) so Survom can load the correct Base GRN containing known DNA binding sites.</p></li>
+<li><p>Choose to build the network based on your Computed Clusters (from Phase 1) or an Uploaded Annotation column, and specify your target lineage (e.g., “Erythroids”).</p></li>
+</ul>
+</section>
+<section id="network-inference-parameters">
+<h3>2. Network Inference Parameters<a class="headerlink" href="#network-inference-parameters" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Sparsity (Alpha):</strong> Set Alpha to 10. Higher values apply a strict mathematical penalty, forcing the algorithm to delete weak connections and only retain the highest-confidence regulatory links.</p></li>
+<li><p><strong>Link Filtering:</strong> Keep only the top 2,000 links to prevent the final network from looking like an unreadable hairball.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="phase-3-image-analysis-interactive-results">
+<h2>Phase 3: Image Analysis &amp; Interactive Results<a class="headerlink" href="#phase-3-image-analysis-interactive-results" title="Link to this heading"></a></h2>
+<p>Survom generates highly interactive plots and downloadable tables for publication and further research.</p>
+<section id="interactive-image-analysis">
+<h3>1. Interactive Image Analysis<a class="headerlink" href="#interactive-image-analysis" title="Link to this heading"></a></h3>
+<p>Every plot generated in Survom (UMAP, Volcano Plots, Centrality Scatters) can be zoomed, panned, and adjusted. Hover over points to reveal detailed statistical information. On the top right corner of all result images, you will find a toolbar with the following options:</p>
+<ul class="simple">
+<li><p><strong>Download:</strong> Download the plot as a high-resolution PNG or SVG format for publication.</p></li>
+<li><p><strong>Zoom:</strong> Click and drag to zoom into specific subgraphs or dense clusters.</p></li>
+<li><p><strong>Pan:</strong> Move seamlessly across the image.</p></li>
+<li><p><strong>Select:</strong> Use the Box or Lasso select tools to highlight specific areas of the plot.</p></li>
+<li><p><strong>Reset:</strong> Autoscale or Reset the axes of the image to return to the default view.</p></li>
+</ul>
+</section>
+<section id="network-visualization">
+<h3>2. Network Visualization<a class="headerlink" href="#network-visualization" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Centrality Plot:</strong> Identifies the master regulators of your cluster. Genes with an Eigenvector score near 1.0 are the most critical drivers of that cell identity.</p></li>
+<li><p><strong>Cytoscape Viewer:</strong> After extracting a subnetwork for specific target genes, you can interact with the Cytoscape graph. Drag nodes to rearrange them for clarity, and click “Download Network Image” to save the topology.</p></li>
+</ul>
+</section>
+<section id="data-export">
+<h3>3. Data Export<a class="headerlink" href="#data-export" title="Link to this heading"></a></h3>
+<p>When you are satisfied with your analysis, use the “Export Results” section. You can download your processed Single-Cell data (<code class="docutils literal notranslate"><span class="pre">.h5ad</span></code>), Marker Gene lists (<code class="docutils literal notranslate"><span class="pre">.csv</span></code>), and Full Network Tables (<code class="docutils literal notranslate"><span class="pre">.csv</span></code>), or simply click <strong>“Download All Results”</strong> to get a comprehensive ZIP archive of your entire session.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Single-Cell GRN Tool documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Sulagna Basu and Tamalika Das.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

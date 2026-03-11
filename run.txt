@@ -1,0 +1,4 @@
+docker rm -f scom-grn 2>/dev/null || true
+docker run -d --name scom-grn -p 8050:8050   -v /data/users/vikash/scom1.x:/app   -v /data/users/vikash/scom1.x/celloracle_cache:/app/celloracle_cache   -v /data/users/vikash/scom1.x/data/sc_test1:/app/data/sc_test1   -v /data/users/vikash/scom1.x/output:/app/output   -v /data/users/vikash/scom1.x/uploaded_data:/app/uploaded_data   -e PYTHONDONTWRITEBYTECODE=1 -e PYTHONUNBUFFERED=1   scom1x-scom-app:latest python -u app.py
+see the logs: 
+docker logs -f scom-grn

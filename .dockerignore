@@ -1,0 +1,25 @@
+# Ignore these heavy or runtime dirs
+__pycache__/
+*.py[cod]
+*.log
+*.csv
+*.zip
+*.gz
+*.h5
+*.h5ad
+*.tar
+*.egg-info
+
+# Ignore user uploads and outputs (generated at runtime)
+uploaded_data/
+output/
+flask_session/
+celloracle_cache/
+debug_output/
+test_output/
+scanpy.log
+pipeline.log
+
+# Do NOT ignore example data
+# !tamalika_grn/
+# !data/sc_test1/
