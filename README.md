@@ -20,25 +20,26 @@ The installation process should handle these dependencies for you. However, beca
 
 You will need to install Conda/Miniconda and create an environment using Python 3.10:
 
-bash
-conda create -n survom python=3.10
-conda activate survom
+
+```conda create -n survom python=3.10```
+```conda activate survom```
+
 Installing from Source (Recommended)
 Inside your activated survom environment, download the source code from GitHub and install the specific dependencies:
 
 Bash
 # Clone the repository
-git clone [https://github.com/qsblab/survom-scapycell.git](https://github.com/qsblab/survom-scapycell.git)
-cd survom-scapycell
+```git clone [https://github.com/qsblab/survom-scapycell.git](https://github.com/qsblab/survom-scapycell.git)```
+```cd survom-scapycell```
 
 # Install heavy dependencies via Conda to avoid build errors
-conda install -c conda-forge -c bioconda numpy=1.26.4 velocyto.py -y
+```conda install -c conda-forge -c bioconda numpy=1.26.4 velocyto.py -y```
 
 # Ensure compatible setuptools for legacy packages
-pip install "setuptools<70"
+```pip install "setuptools<70"```
 
 # Install remaining requirements
-pip install -r requirements.txt
+```pip install -r requirements.txt```
 
 With your environment activated and dependencies installed, you can immediately launch the interactive application:
 
@@ -48,8 +49,9 @@ The terminal will generate a local web address (typically http://127.0.0.1:8050/
 
 # Survom Documentation & Tutorials
 We have provided comprehensive documentation to guide users step-by-step through running Survom for different case studies.
+*Main Tutorial: Explains how to upload standard 10x Genomics matrices and seamlessly perform QC filtering, normalization, and highly variable gene (HVG) selection.
 
-GRN Inference: Explains how to build and visualize complex regulatory networks.
+*GRN Inference: Explains how to build and visualize complex regulatory networks.
 
 # Usage
 First, launch the app via app.py. Ensure you have your single-cell matrices ready (e.g., .mtx, .tsv, or .h5ad formats).
