@@ -27,7 +27,7 @@ You will need to install Conda/Miniconda and create an environment using Python 
 Installing from Source (Recommended)
 Inside your activated survom environment, download the source code from GitHub and install the specific dependencies:
 
-Bash
+
 # Clone the repository
 ```git clone [https://github.com/qsblab/survom-scapycell.git](https://github.com/qsblab/survom-scapycell.git)```
 ```cd survom-scapycell```
