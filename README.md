@@ -49,9 +49,9 @@ The terminal will generate a local web address (typically http://127.0.0.1:8050/
 
 # Survom Documentation & Tutorials
 We have provided comprehensive documentation to guide users step-by-step through running Survom for different case studies.
-*Main Tutorial: Explains how to upload standard 10x Genomics matrices and seamlessly perform QC filtering, normalization, and highly variable gene (HVG) selection.
+* Main Tutorial: Explains how to upload standard 10x Genomics matrices and seamlessly perform QC filtering, normalization, and highly variable gene (HVG) selection.
 
-*GRN Inference: Explains how to build and visualize complex regulatory networks.
+* GRN Inference: Explains how to build and visualize complex regulatory networks.
 
 # Usage
 First, launch the app via app.py. Ensure you have your single-cell matrices ready (e.g., .mtx, .tsv, or .h5ad formats).
