@@ -20,7 +20,7 @@ The installation process should handle these dependencies for you. However, beca
 
 You will need to install Conda/Miniconda and create an environment using Python 3.10:
 
-```bash
+bash
 conda create -n survom python=3.10
 conda activate survom
 Installing from Source (Recommended)
