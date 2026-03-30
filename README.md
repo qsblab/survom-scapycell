@@ -45,7 +45,7 @@ With your environment activated and dependencies installed, you can immediately 
 
 `python app.py`
 
-The terminal will generate a local web address (typically http://127.0.0.1:8050/scom/). Open this link in your web browser to access the graphical interface.
+The terminal will generate a local web address (typically http://127.0.0.1:8050/scom/). Open this link in your web browser to access the local interface.
 
 # Survom Documentation & Tutorials
 We have provided comprehensive documentation to guide users step-by-step through running Survom for different case studies.
