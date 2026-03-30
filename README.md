@@ -42,25 +42,21 @@ pip install -r requirements.txt
 
 With your environment activated and dependencies installed, you can immediately launch the interactive application:
 
-Bash
-python app.py
+`python app.py`
+
 The terminal will generate a local web address (typically http://127.0.0.1:8050/scom/). Open this link in your web browser to access the graphical interface.
 
-Survom Documentation & Tutorials
+# Survom Documentation & Tutorials
 We have provided comprehensive documentation to guide users step-by-step through running Survom for different case studies.
-
-The documentation is available in the docs/build/html/ folder.
-
-Main Tutorial: Open docs/build/html/tutorial.html in your web browser to learn how to upload standard 10x Genomics matrices and seamlessly perform QC filtering, normalization, and highly variable gene (HVG) selection.
 
 GRN Inference: Explains how to build and visualize complex regulatory networks.
 
-Usage
+# Usage
 First, launch the app via app.py. Ensure you have your single-cell matrices ready (e.g., .mtx, .tsv, or .h5ad formats).
 
 Upload your data via the interface. If you are computing differential expression to identify cluster-specific marker genes, make sure to configure the thresholds in the QC tab before running the Scanpy pipeline. Finally, navigate to the Network Visualization tab to explore interactive node-and-edge graphs.
 
-License
+# License
 The software in this repository is licensed under the Apache-2.0 License. Please see the LICENSE file for more details.
 
 
